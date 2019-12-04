@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- CSS style to place three div side by side -->
+    <style> 
+        html {
+            height: 100%;
+        }
+        body {
+            min-height: 100%;
+            height: 1000px;
+        }
+        #mou{
+            background: blueviolet;
+            position: absolute;
+            display: block;
+            opacity: 0.3;
+            width: 25px;
+            height: 25px;
+            border-radius: 999px;
+        }
+        /*Esta comentado de onda, es para probar css desde jQuery
+            #sigueme{
+                background-color: yellow;
+                width: 10%;
+                border: 4px solid #000000;
+                height: 150px;
+                left: 150px;
+                top: 300px;
+                position: absolute;
+                display:block;
+            }*/
+            
+</style>
+<script
+src="https://code.jquery.com/jquery-3.4.1.js"
+integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+crossorigin="anonymous"></script>
+    
+    <title>Ejercicio Caja</title>
+</head>
+<body> 
+		
+    <h1>Ejercicio clase 28</h1> 
+    <p>Animar el div para que se mueva con cada click realizado en la pantalla.
+        <br>
+        
+    </p>
+​
+    <div id="sigueme">
+        Soy una caja
+    </div>
+​       <div id="mou"></div>
+
+    <script>
+$(document).ready(()=>{
+console.log("No se porque anda");
+//mosuemove
+
+var $div=$("#sigueme");
+docu=$(document);
+var x='';
+var y='';
+    docu.click(()=>{
+        var x=event.offsetX;
+        var y=event.offsetY;
+            console.log("en X: "+x);
+            console.log("en Y: "+y);
+            $div.animate({
+                left:x,
+                top:y
+            },'slow');// se le puede poner un numerito o 'slow', 'normal', 'fast'
+   
+});
+docu.mousemove(()=>{
+    $('body').css("cursor","none");
+    $("#mou").css("left",event.clientX);
+    $("#mou").css("top",event.clientY);
+
+});
+
+//Hover cuando pasa mouse por la caja cambia a rojo y cuando salis a verde.
+function cambiaRojo(){
+$(this).css("background","red");
+};
+function cambiaVerde(){
+$(this).css("background","green");
+};
+$div.hover(cambiaRojo,cambiaVerde);
+
+
+//CSS desde jQuery deaaaaaaaaaaaaaaaa
+$div.css("backgroundColor","yellow")
+            .css("width", "10%")
+            .css("border", "4px solid #000000")
+            .css("height", "150px")
+            .css("left", "150px")
+            .css("top", "300px")
+            .css("position", "absolute")
+            .css("display", "block");
+
+
+
+//esta es la llave del ready bro no se toca c90 llegando al pary
+});
+
+    </script>
+    
+</body> 
+</html>
